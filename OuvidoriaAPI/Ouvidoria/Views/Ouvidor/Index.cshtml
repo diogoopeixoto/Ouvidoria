@@ -8,6 +8,7 @@
 
 
 
+<!-- Importando os arquivos do Bootstrap -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <!-- Importando os ícones do Bootstrap -->
@@ -36,7 +37,6 @@
 
 			<script>
 				$('#txBusca').keydown(function (event) {
-					// enter has keyCode = 13, change it if you want to use another button
 					if (event.keyCode == 13) {
 						this.form.submit();
 						return false;
@@ -94,18 +94,24 @@
 						<td> @man.Setor.Nome </td>
 						<td> @man.DataCriacao.ToString("dd/MM/yyyy HH:mm") </td>
 						<td>
-							<div class="col">
+								<div class="container mt-1">
 								<div class="text-end">
-									<button class="btn btn-primary me-2">
-										<a href="/manifestations/open/@man.Id" class="fas fa-pencil-alt me-2"></a>
-									</button>
-									<button class="btn btn-light me-2" asp-area="" asp-controller="DirecionarManifestacao" asp-action="Index">
-										<a href="/manifestations/responsePage/@man.Id" class="fas fa-paper-plane text-black me-2"></a>
+									
+										<a href="/manifestations/open/@man.Id" class="btn btn-primary me-2">
+											<i class="fas fa-pencil-alt me-2"></i>
+										</a>
+									
+									
+										<a href="/manifestations/responsePage/@man.Id" class="btn btn-light me-2" >
+											<i class="fas fa-paper-plane text-black me-2"></i>
+										</a>
 
-									</button>
-									<button class="btn btn-danger">
-										<a href="/manifestations/Delete/@man.Id" class="fas fa-trash-alt me-2"></a>
-									</button>
+									
+									
+										<a href="/manifestations/Delete/@man.Id" class="btn btn-danger">
+											<i class="fas fa-trash-alt me-2"></i>
+										</a>
+									
 								</div>
 							</div>
 						</td>
@@ -126,10 +132,10 @@
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item active" aria-current="page">
-					<a class="page-link" href="#">2</a>
+					<a class="page-link" href="#">1</a>
 				</li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
 				<li class="page-item">
 					<a class="page-link" href="#" aria-label="Next">
