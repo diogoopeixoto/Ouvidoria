@@ -1,0 +1,88 @@
+﻿@using OuvidoriaAPI.DTO
+@using OuvidoriaAPI.Enum
+@{
+    Layout = "_LayoutOuvidor";
+}
+
+
+@{
+    ManifestacaoDTO DTO = Model;
+}
+
+
+@{
+    ViewBag.Title = "Registro de Manifestação";
+
+}
+
+
+<div >
+    <h2 class="text-center mb-4">Faça aqui sua Manifestação</h2>
+
+    <div class="mb-3">
+        <label for="tipoSolicitacao" class="form-label">Tipo de Solicitação:</label>
+        <input value="@DTO.TipoSolicitacao" type="text" name="Nome" class="form-control" id="nome" placeholder="Digite seu nome" required>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input value="@DTO.Nome" type="text" name="Nome" class="form-control" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input value="@DTO.Email" type="email" name="Email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="telefoneCelular" class="form-label">Celular:</label>
+            <input value="@DTO.Celular" type="tel" name="Celular" class="form-control" id="telefoneCelular" placeholder="(00) 00000-0000" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="perfil" class="form-label">Perfil:</label>
+        <input value="@DTO.Perfil" type="text" name="Campus" class="form-control" id="campus" placeholder="Digite o campus" required>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="campus" class="form-label">Campus:</label>
+            <input value="@DTO.Campus" type="text" name="Campus" class="form-control" id="campus" placeholder="Digite o campus" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="curso" class="form-label">Curso:</label>
+            <input value="@DTO.Curso" type="text" name="Curso" class="form-control" id="curso" placeholder="Digite o curso" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="setor" class="form-label">Setor:</label>
+            <input value="@DTO.Curso" type="text" name="Curso" class="form-control" id="curso" placeholder="Digite o curso" required>
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="assunto" class="form-label">Assunto:</label>
+            <input value="@DTO.Assunto" type="text" name="Assunto" class="form-control" id="assunto" placeholder="Digite o Assunto" required>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label for="manifestacao" class="form-label">Manifestação:</label>
+        <textarea class="form-control" name="Conteudo" id="manifestacao" name="manifestacao" rows="5">
+                @DTO.Conteudo
+        </textarea>
+    </div>
+    <div class="mb-3">
+        <label for="anexo" class="form-label">Anexar arquivo:</label>
+    </div>
+
+    <a href="/manifestations/responsepage/@Model.Id" class="btn btn-success float-end">Responder</a>
+
+</div>
+

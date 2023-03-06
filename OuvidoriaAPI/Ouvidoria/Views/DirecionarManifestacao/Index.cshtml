@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "_LayoutOuvidor";
+    ViewData["Title"] = " DirecionarManifestação";
+}
+
+
+<div class="container my-5">
+    <h1>Direcionamento de Manifestação</h1>
+    <form action="enviar_manifestacao.php" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome completo Ouvidor</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Manifestação</label>
+            <input type="text" class="form-control" id="manifestacao" name="manifestacao" required>
+        </div>
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Assunto</label>
+            <input type="text" class="form-control" id="assunto" name="assunto" required>
+        </div>
+        <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="acao" class="form-label">Ação</label>
+            <select class="form-select" id="acao" name="acao">
+                <option value="resposta-email">Enviar resposta por e-mail ao manifestante</option>
+                <option value="departamento">Enviar para departamento</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="acao" class="form-label">Departamento</label>
+            <select class="form-select" id="departamento" name="departamento">
+                <option value="financeiro">Financeiro</option>
+                <option value="biblioteca">Biblioteca</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="anexo" class="form-label">Anexar arquivo:</label>
+            <input type="file" class="form-control" id="anexo" name="anexo">
+        </div>
+        <button type="submit" class="btn btn-primary float-end">Enviar</button>
+    </form>
+</div>

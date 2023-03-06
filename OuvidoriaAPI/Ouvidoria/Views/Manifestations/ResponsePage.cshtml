@@ -1,0 +1,70 @@
+﻿@using OuvidoriaAPI.DTO
+@model ManifestacaoDTO
+
+@{
+    Layout = "_LayoutOuvidor";
+    ViewData["Title"] = " DirecionarManifestação";
+}
+
+
+<div class="container my-5">
+    <h1>Responder Manifestação</h1>
+    <form enctype="multipart/form-data" asp-controller="Manifestations" asp-action="SendResponse"  method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome completo Ouvidor</label>
+            <input value="@Model.VisOuvidor.Nome" type="text" class="form-control" id="nome" name="nome" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Manifestação</label>
+            <input value="@Model.Id" type="text" class="form-control"  id="manifestacao" name="ManifestacaoId">
+        </div>
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Assunto</label>
+            <input value="@Model.Assunto" type="text" class="form-control" id="assunto" name="assunto" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Conteúdo</label>
+            <textarea value="" type="text" class="form-control" id="conteudo" name="assunto">
+                @Model.Conteudo
+            </textarea>
+        </div>
+
+        <hr />
+
+
+        <div class="mb-3">
+            <label for="mensagem" class="form-label">Resposta do Ouvidor</label>
+            <textarea class="form-control" id="mensagem" name="Texto" rows="5" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="acao" class="form-label">Ação</label>
+            <select class="form-select" id="acao" name="Acao">
+                <option value="0">Enviar resposta por e-mail ao manifestante</option>
+                <option value="1">Enviar para departamento</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="assunto" class="form-label">Email setor</label>
+            <input type="email" class="form-control" id="assunto" name="EmailSetorEncaminhar" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="setor" class="form-label">Setor:</label>
+            <select class="form-select" name="SetorIdEncaminhar" id="Setor">
+
+                @foreach (SetorDTO setor in ViewBag.Setores)
+                {
+                    <option value="@setor.Id"> @setor.Nome </option>
+                }
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="anexo" class="form-label">Anexar arquivo:</label>
+            <input type="file" class="form-control" id="anexo" name="AnexoUp">
+        </div>
+        <button type="submit" class="btn btn-primary float-end">Enviar</button>
+    </form>
+</div>

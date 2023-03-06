@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "_LayoutInicial";
+    ViewData["Titulo"] = "Tela de Cadastro";
+}
+
+
+<form class="row g-3">
+    <div class="col-md-6">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome">
+    </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputTipoAcesso" class="form-label">Tipo de Acesso</label>
+        <select id="inputTipoAcesso" class="form-select">
+      <option selected>Ouvidor</option>
+      <option selected>Usuário</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+  </div>
+</form>

@@ -1,0 +1,148 @@
+﻿@using OuvidoriaAPI.DTO
+@model OuvidorIndexDTO
+@{
+    Layout = "_LayoutOuvidor";
+    ViewData["Titulo"] = "Ouvidor";
+}
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<!-- Importando os ícones do Bootstrap -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg ">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+	</div>
+
+</nav>
+
+<!-- Conteúdo da Tela -->
+<div class="container my-5">
+
+	<!-- Barra de Busca -->
+	<div class="row mb-3">
+		<div class="col-md-12">
+			<form asp-controller="ouvidor" asp-action="index">
+				<input id="txBusca" value="@Model.TermoBusca" type="text" class="form-control" name="busca" placeholder="Buscar...">
+			</form>
+
+			<script>
+				$('#txBusca').keydown(function (event) {
+					// enter has keyCode = 13, change it if you want to use another button
+					if (event.keyCode == 13) {
+						this.form.submit();
+						return false;
+					}
+				});
+			</script>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="col">
+			<div class="d-flex justify-content-end">
+				<span style="font-weight: bold; margin-right: 10px;">Respondidas:</span>
+				<span style="color: green; margin-right: 20px;"> @Model.Estatistica.Respondidas </span>
+				<span style="font-weight: bold; margin-right: 10px;">Vencidas:</span>
+				<span style="color: orange; margin-right: 20px;"> @Model.Estatistica.Vencidas </span>
+				<span style="font-weight: bold; margin-right: 10px;">Pendentes:</span>
+				<span style="color: darkslategrey; margin-right: 20px;">  @Model.Estatistica.Pendentes </span>
+				<span style="font-weight: bold; margin-right: 10px;">Excluídas:</span>
+				<span style="color: red; margin-right: 20px;"> @Model.Estatistica.Excluidas </span>
+				<span style="font-weight: bold; margin-right: 10px;">Total:</span>
+				<span style="color: black;"> @Model.Estatistica.Total </span>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Grid de Dados -->
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Protocolo</th>
+
+						<th>Nome</th>
+						<th>Assunto</th>
+						<th>Tipo</th>
+						<th>Setor</th>
+						<th>Perfil</th>
+						<th>Cadastrado em</th>
+						<th>Operações</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					@foreach (var man in Model.Manifestacoes)
+                    {
+
+					<tr>
+						<td> @man.Id.ToString().Split('-')[0] </td>
+						<td> @man.Nome </td>
+						<td> @man.Assunto </td>
+						<td> @man.TipoSolicitacao </td>
+						<td> @man.Perfil </td>
+						<td> @man.Setor.Nome </td>
+						<td> @man.DataCriacao.ToString("dd/MM/yyyy HH:mm") </td>
+						<td>
+							<div class="col">
+								<div class="text-end">
+									<button class="btn btn-primary me-2">
+										<a href="/manifestations/open/@man.Id" class="fas fa-pencil-alt me-2"></a>
+									</button>
+									<button class="btn btn-light me-2" asp-area="" asp-controller="DirecionarManifestacao" asp-action="Index">
+										<a href="/manifestations/responsePage/@man.Id" class="fas fa-paper-plane text-black me-2"></a>
+
+									</button>
+									<button class="btn btn-danger">
+										<a href="/manifestations/Delete/@man.Id" class="fas fa-trash-alt me-2"></a>
+									</button>
+								</div>
+							</div>
+						</td>
+					</tr>
+
+                    }
+
+
+				</tbody>
+
+			</table>
+
+		</div>
+		<nav aria-label="...">
+			<ul class="pagination">
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item active" aria-current="page">
+					<a class="page-link" href="#">2</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item">
+					<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+	</div>
+
+</div>
+
+
+
+

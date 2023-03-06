@@ -1,0 +1,32 @@
+﻿@{
+        ViewData["Title"] = "User";
+
+}
+
+
+<h4 class="border-bottom border-light pb-3">Bem-vindo ao nosso plataforma integrada de ouvidoria.</h4>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card border-primary mb-3">
+            <div class="card-header">Criar uma Manifestação</div>
+            <div class="card-body">
+                <p class="card-text">Uma manifestação em um sistema de ouvidoria é uma forma de o usuário expressar sua opinião, 
+                    seja ela uma reclamação, sugestão, elogio ou pedido de informação, 
+                    sobre um serviço ou atendimento prestado por uma organização.</p>
+                <a class=" btn btn-primary float-end" asp-area="" asp-controller="Manifestations" asp-action="Index">Nova Manifestação</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card border-info mb-3">
+            <div class="card-header">Visualizar suas manifestações</div>
+            <div class="card-body">
+                <p class="card-text">Este botão permite que você visualize todas as manifestações abertas por você em nosso sistema de ouvidoria,
+                    para acompanhar o andamento e o status de cada uma delas.</p>
+                <a class=" btn btn-primary float-end" asp-area="" asp-controller="StatusManifestacao" asp-action="Index">Minhas Manifestações</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
